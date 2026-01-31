@@ -19,11 +19,12 @@ pipeline {
         }
         stage('Deliver') {
             steps {
-                sh "pyinstaller --onedir sources/add2vals.py"
+                sh "pyinstaller --onedir --noconfirm sources/add2vals.py"
+		sh "zip -r dist/add2vals.zip dist/add2vals"
             }
             post {
                 success {
-                    archiveArtifacts 'dist/add2vals'
+                    archiveArtifacts 'dist/add2vals.zip'
                 }
             }
         }
