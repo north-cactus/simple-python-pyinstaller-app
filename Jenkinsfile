@@ -20,7 +20,7 @@ pipeline {
         stage('Deliver') {
             steps {
                 sh "pyinstaller --onedir --noconfirm sources/add2vals.py"
-		sh "zip -r dist/add2vals.zip dist/add2vals"
+		sh "tar cvfz add2vals.tar.gz dist/add2vals"
             }
             post {
                 success {
